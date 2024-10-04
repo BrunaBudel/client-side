@@ -14,5 +14,13 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(formData)
-  })
+  }).then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    console.log(data);
+  }).catch(function(error) {
+    console.error(error);
+  }).finally(function() {
+    document.getElementById('contactForm').reset();
+  });
 })
